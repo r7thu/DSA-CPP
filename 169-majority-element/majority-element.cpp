@@ -1,6 +1,11 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
+        // 
+        // BRUTE FORCE
+        // 2553 ms runtime
+        // Normal Logic - Iterate for each element
+        // 
         int n=nums.size();
         int maxCount=0;
         int maxElement;
