@@ -2,24 +2,30 @@ class Solution {
 public:
     int majorityElement(vector<int>& nums) {
         // 
-        // Better Solution
-        // Hashing Logic
+        // Optimal Solution
+        // Moores Votting Algo
         // 
         int n=nums.size();
-        map<int, int> mapp; // For Hash Map
+        int count=0;
+        int element;
+        // int in=1;
         for(int i=0;i<n;i++){
-            mapp[nums[i]]++; //Value store how much time the element appeared
-        }
-
-        //method to Iterate a MAP
-        //Use Range Based Iteration
-        //as elements in Map are not index based they are based on red black trees
-        //Remenber to use auto always in range based iteration
-        for(auto i : mapp){
-            if(i.second>n/2){
-                return i.first;
+            if(count==0){
+                element=nums[i];
+                count=1;
             }
+            else if(nums[i]==element){
+                    count++;
+                }else
+                    count--;
         }
+        int checkCount=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]==element)
+                checkCount++;
+        }
+        if(checkCount>n/2)
+            return element;
         return -1;
     }
 };
