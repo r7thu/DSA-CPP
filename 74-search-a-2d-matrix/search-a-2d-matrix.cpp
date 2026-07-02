@@ -1,26 +1,27 @@
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        //Brute Force Approach is Linear search through all elements
-        // Which will lead to O(M*N);
-        // One more Approach is to do binary search in all rows to find the element
-        // We are Doing Better Solution Now
-        //Approach is to start from upper right most element
-        //move down if target is greater
-        //move left if target is maller
-        int m=matrix.size();
-        int n=matrix[0].size();
-        int i=0;
-        int j=n-1;
-        while(i<m && j>=0){
-            if(matrix[i][j]==target){
+        if(!matrix.size())
+        return false;
+        //Optimal Solution 
+        // Do binary search based on index from 0 to n-1
+        //and check for element present
+        int n=matrix.size();//row size
+        int m=matrix[0].size();//col size
+        int l=0;
+        int r=(n*m)-1;
+        while(l<=r){
+            int mid=(l+r)/2;
+            int row=mid/m;
+            int col=mid%m;
+            if(matrix[row][col]==target){
                 return true;
             }
-            else if(matrix[i][j]<target){
-                i++;
-            }else{
-                j--;
+            else if(matrix[row][col]<target){
+                l=mid+1;
             }
+            else
+                r=mid-1;
         }
         return false;
     }
