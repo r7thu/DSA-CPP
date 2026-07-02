@@ -1,25 +1,19 @@
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
-        // Brute force
-        vector<int> arr;
+        // Better Solution 
+        // Used Hashing Same as Majority 1
+        map<int,int> mapp;
+        vector <int> arr;
         int n=nums.size();
-        int count;
+        int count=floor(n/3);
         for(int i=0;i<n;i++){
-            // if(arr.size()==0 || arr[0]!=nums[i] ){
-            //     count=0;
-            // }
-            if (!arr.empty() && (arr[0] == nums[i] || (arr.size() > 1 && arr[1] == nums[i])))
-            continue;
+            mapp[nums[i]]++;
+        }
 
-            int count=0;
-            for(int j=0;j<n;j++){
-                if(nums[j]==nums[i]){
-                    count++;
-                }
-            }
-            if(count>n/3){
-                arr.push_back(nums[i]);
+        for(auto i:mapp){
+            if(i.second>count){
+                arr.push_back(i.first);
             }
         }
         return arr;
