@@ -1,8 +1,9 @@
 class Solution {
 public:
     // 
-    // Solution 1 better approach
-    // Using Sorting and therefore groupin consecutive elements
+    // Solution 1 better approach O(nlogn)
+    // logn from sorting and n from loop
+    // Using Sorting and therefore grouping consecutive elements
     // while iterate through the array once 
     // checking if any 2 element pairs are consecutive
     // if its consecutive then increase count and then check for maxCount
