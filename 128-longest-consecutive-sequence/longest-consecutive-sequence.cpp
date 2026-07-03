@@ -1,9 +1,20 @@
 class Solution {
 public:
+    // 
+    // Solution 1 better approach
+    // Using Sorting and therefore groupin consecutive elements
+    // while iterate through the array once 
+    // checking if any 2 element pairs are consecutive
+    // if its consecutive then increase count and then check for maxCount
+    // if not then check if its dupleicate nums[i]==nums[i+1]
+    // if duplicate skip
+    // if not in any case above then start count oncemore from 1(start fresh)
+    // at end maxCount will have answer
+    // 
     int longestConsecutive(vector<int>& nums) {
-        if(nums.empty())
-            return 0;
         sort(nums.begin(),nums.end());
+        if(nums.empty())
+        return 0;  
         int n=nums.size();
         int count =1;
         int maxCount =1;
