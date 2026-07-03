@@ -2,14 +2,15 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // 
-        // optimal Approach
-        // My Approach
-        // Doesnt initialize the Hash Map first itself
-        // We will intialize element in Hash map
-        // after we check if its complement is present or not
-        // if complement not present then we will add it to hash map
-        // so that when its complements time come it will be in hash map waiting to be found
-        // Simple Idea hard to remember 
+        // Sol1 optimal Approach
+        // Simple idea
+        // Create Duplicate 2d vector and sort it 
+        // each row has 2 elements key and index
+        // make 2 Pointer. pointing to left and right
+        // check if target if sum of both pointed elements
+        // if target > sum move i upwards
+        // if target < sum move j downwards
+        // it will last lead to answer
 
         int n=nums.size();
         int i=0;
