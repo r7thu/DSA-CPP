@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // 
-        // Solution 2 Better Approach
+        // optimal Approach
         // My Approach
         // Doesnt initialize the Hash Map first itself
         // We will intialize element in Hash map
@@ -12,14 +12,24 @@ public:
         // Simple Idea hard to remember 
 
         int n=nums.size();
-        map<int,int> mapp;
-        
+        int i=0;
+        int j=n-1;
+        vector<vector<int>> arr;
         for(int i=0;i<n;i++){
-            int complement = target - nums[i];
-            if (mapp.find(complement) != mapp.end()) {
-                return {mapp[complement], i};
+            arr.push_back({nums[i],i});
+        }
+
+        sort(arr.begin(),arr.end());
+        while(i<=j){
+            if(arr[i][0]+arr[j][0]==target){
+                return {arr[i][1],arr[j][1]};
             }
-            mapp[nums[i]]=i;
+            else if(arr[i][0]+arr[j][0]>target){
+                j--;
+            }
+            else{
+                i++;
+            }
         }
         return {-1,-1};
     }
