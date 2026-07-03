@@ -8,7 +8,8 @@ public:
         int len=0;
         int maxLen=0;
         for(int i=0;i<n;i++){
-            vector<int> hash(256,0); //reinitialize hash map each time
+            //better to take hash map as array to reduce time compexity and space complexity
+            int hash[256]={0}; //reinitialize hash map each time
             for(int j=i;j<n;j++){
                 if(hash[s[j]]==1)
                     break;
