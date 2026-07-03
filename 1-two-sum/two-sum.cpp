@@ -1,15 +1,35 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        //Brute Force Approach
-        // O(n^2)
         int n=nums.size();
+        map<int,int> mapp;
         for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                if(nums[i]+nums[j]==target)
-                    return {i,j};
+            mapp[nums[i]] = i;
+        }
+        for(int i=0;i<n;i++){
+            
+            int complement = target - nums[i];
+            if (mapp.find(complement) != mapp.end()) {
+                auto index= mapp.find(complement);
+                if(i==index->second)
+                    continue;
+                return {mapp[complement], i};
             }
         }
-        return {0};
+        return {-1,-1};
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
