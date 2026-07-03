@@ -9,7 +9,10 @@ public:
         //2 Pointers
         int l=0;
         int r=0;
-        vector<int> hash (256,-1); 
+        int hash[256];
+        for(int i=0;i<256;i++){
+            hash[i]=-1;
+        } 
         while(r<s.length()){
             if(hash[s[r]]==-1 || hash[s[r]]<l )
             {
