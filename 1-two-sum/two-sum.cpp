@@ -1,10 +1,20 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        // 
+        // Solution 1 Better Approach
+        // My Approach
+        // Already intialized the Hash Map
+        // Checked if the index of both i and mapp.find(el) are same
+        // cause it is said not to use same element twice
+        // 
+
         int n=nums.size();
         map<int,int> mapp;
         for(int i=0;i<n;i++){
-            mapp[nums[i]] = i;
+            // Stored index as Value of Key
+            // So that we can check for element not repeating
+            mapp[nums[i]] = i; 
         }
         for(int i=0;i<n;i++){
             
