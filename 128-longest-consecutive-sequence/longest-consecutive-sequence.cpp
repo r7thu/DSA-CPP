@@ -18,25 +18,26 @@ public:
     // to remove duplicates we use unordered set
 
     int longestConsecutive(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
         if(nums.empty())
         return 0;  
         int n=nums.size();
         int count =1;
         int maxCount =1;
-        for(int i=0;i<n-1;i++){
-            if(nums[i+1] == nums[i]+1){
-                count++;
+        unordered_set<int> st;
+        for(int i=0;i<n;i++){
+            st.insert(nums[i]);
+        } 
+        for(auto it:st){
+            if(st.find(it-1)==st.end()){
+                count=1;
+                int x=it;
+                while(st.find(x+1)!=st.end()){
+                    count++;
+                    x++;
+                }
                 maxCount=max(count,maxCount);
             }
-            else if(nums[i+1]==nums[i]){
-                continue;
-            }
-            else
-            {
-                count=1;
-            }
-        } 
+        }
         return maxCount;
     }
 };
