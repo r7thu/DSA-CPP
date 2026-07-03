@@ -4,19 +4,27 @@ public:
     // whenever Substring is mentioned think about 
     // 2 pointer or sliding window approach
     int lengthOfLongestSubstring(string s) {
-        int n=s.size();
         int len=0;
         int maxLen=0;
-        for(int i=0;i<n;i++){
-            //better to take hash map as array to reduce time compexity and space complexity
-            int hash[256]={0}; //reinitialize hash map each time
-            for(int j=i;j<n;j++){
-                if(hash[s[j]]==1)
-                    break;
-                len=j-i+1;
-                maxLen=max(maxLen,len);
-                hash[s[j]]=1;
+        //2 Pointers
+        int l=0;
+        int r=0;
+        vector<int> hash (256,-1); 
+        while(r<s.length()){
+            if(hash[s[r]]==-1 || hash[s[r]]<l )
+            {
+                len=r-l+1;
+                maxLen=max(len,maxLen);
+                hash[s[r]]=r;
+                r++;
             }
+            else 
+            {
+                l=hash[s[r]]+1;
+                hash[s[r]]=r;
+                r++;
+            }
+           
         }
         return maxLen;
     }
