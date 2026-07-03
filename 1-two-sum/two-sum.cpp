@@ -2,12 +2,14 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // 
-        // Solution 1 Better Approach
+        // Solution 2 Better Approach
         // My Approach
-        // Already intialized the Hash Map
-        // Checked if the index of both i and mapp.find(el) are same
-        // cause it is said not to use same element twice
-        // 
+        // Doesnt initialize the Hash Map first itself
+        // We will intialize element in Hash map
+        // after we check if its complement is present or not
+        // if complement not present then we will add it to hash map
+        // so that when its complements time come it will be in hash map waiting to be found
+        // Simple Idea hard to remember 
 
         int n=nums.size();
         map<int,int> mapp;
