@@ -1,10 +1,16 @@
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        // 
         // This is the Optimal Approach 
         // same as 2 Sum 2 pointer Approach
         // in 2 sum we directly started while(l<r)
         // here we start only inside a nested loop of i and j
+        // we are implementing the same idea inside there
+        // extra things that we do here are we check for duplicates
+        // we check for duplicates inside i loop j loop and
+        // after finding a sum==target
+        // 
         int n=nums.size();
         vector<vector<int>> vctr;
         sort(nums.begin(),nums.end());
