@@ -1,30 +1,48 @@
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
-        // This is the Better Approach 
-        // More Confusing than 2 Sum Hash Approach
-        // we try to find the complement-> (target-n[i]+n[j]+n[k])
-        // if complement present then it will be the n[l] 
-        // Main changes are [ij---k---] we are checking with k to find n[l]
-        // We add nums[k] in hash set and check if the sum==target
-        // 
+        // This is the Optimal Approach 
+        // same as 2 Sum 2 pointer Approach
+        // in 2 sum we directly started while(l<r)
+        // here we start only inside a nested loop of i and j
         int n=nums.size();
-        set <vector<int>> st;
-
+        vector<vector<int>> vctr;
+        sort(nums.begin(),nums.end());
         for(int i=0;i<n;i++){
+            if(i>0 && nums[i]==nums[i-1]) //always check backwards
+                continue;
+
             for(int j=i+1;j<n;j++){
-                unordered_set <long long> hash;
-                for(int k=j+1;k<n;k++){
-                    long long complement = (long long)target - nums[i] - nums[j] - nums[k];
-                    if(hash.count(complement)){
-                        vector<int> temp ={nums[i],nums[j],nums[k],(int)complement};
-                        sort(temp.begin(),temp.end());
-                        st.insert(temp);
+                if(j>i+1 && nums[j]==nums[j-1])
+                    continue;
+
+                //now we create 2 pointers
+                int left =j+1;
+                int right =n-1;
+                while(left<right){
+                    long long sum= (long long)nums[i]+nums[j]+nums[left]+nums[right];
+
+                    if(sum==target){
+                        vctr.push_back({ nums[i],nums[j],nums[left],nums[right] });
+
+                        while(left<right && nums[left]==nums[left+1]){
+                            left++;
+                        }
+                        while(left<right && nums[right]==nums[right-1]){
+                            right--;
+                        }
+
+                        left++;
+                        right--;
+
                     }
-                    hash.insert(nums[k]);
+                    else if(sum>target)
+                        right--;
+                    else
+                        left++;
                 }
             }
         }
-        return vector<vector<int>>(st.begin(),st.end());
+        return vctr;
     }
 };
