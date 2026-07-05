@@ -6,7 +6,9 @@ public:
     // Main idea is to generate each row and Push_back it to 2D matrix Triangle
     // to generate each row element use equation
     // row[j]=triangle[i-1][j-1]+triangle[i-1][j];
-    // 
+    
+    // Do Pascal Triangle 2
+    // for finding only one row of Pascal Triangle with O(N) TC
     vector<vector<int>> generate(int numRows) {
         vector<vector<int>> triangle;
 
