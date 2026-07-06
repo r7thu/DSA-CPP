@@ -1,6 +1,7 @@
 class Solution {
 public:
     // Optimal Solution
+    // Dutch National Flag Algorithm
     // With INPLACE
     // Keep 3 Pointers
     // 0--------low-1 for zero
