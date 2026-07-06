@@ -1,7 +1,15 @@
 class Solution {
 public:
+    // Optimal Solution
+    // Idea is simple
+    // We sort the array to group them easily 
+    // We then create a new Array 
+    // In this array we add our first element in front
+    // after that we check for each iteration from 1 to n-1
+    // if oldArr[i][0]> NewArr.back()[1]
+    // So the newArr will be our Answer
+
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        // Optimal Solution
         int n=intervals.size();
         sort(intervals.begin(),intervals.end()); //To Help Group 
         vector<vector<int>> arr;
