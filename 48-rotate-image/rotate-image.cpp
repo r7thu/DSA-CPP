@@ -1,5 +1,11 @@
 class Solution {
 public:
+
+    // Simple Idea
+    // Taking the Transpose of a matrix and
+    // then taking its reverse will make it rotate 90 degrees
+    // TC O(N^2)
+    // INPLACE method so O(1)
     void rotate(vector<vector<int>>& matrix) {
         //Transpose of the Matrix
         int n=matrix.size();
