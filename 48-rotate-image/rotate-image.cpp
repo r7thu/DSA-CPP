@@ -1,5 +1,13 @@
 class Solution {
 public:
+    // 
+    // BRUTE Force Method
+    // find relationship between both matrix
+    // we can find relation ArrNew[i][j]=ArrOld[n-1-j][i]
+    // Now just Apply it to all new elements in new matrix
+    // TC O(N^2)
+    // 
+
 
     // Simple Idea
     // Taking the Transpose of a matrix and
@@ -24,11 +32,3 @@ public:
         }
     }
 };
-// 
-// 
-// BRUTE Force Method
-// find relationship between both matrix
-// we can find relation ArrNew[i][j]=ArrOld[n-1-j][i]
-// Now just Apply it to all new elements in new matrix
-// 
-// 
