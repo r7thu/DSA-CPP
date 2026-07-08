@@ -11,6 +11,8 @@
 class Solution {
 public:
     // Brute Force Approach
+    // Used a stack to store value and then
+    // Created a New Linked List and added values from last 
     ListNode* reverseList(ListNode* head) {
         ListNode* temp = head;
         ListNode* Dummy = new ListNode(-1);
