@@ -10,38 +10,37 @@
  */
 class Solution {
 public:
-    // Better Solution
-    // My approach. it is Almost Same as Optimal
-    // the brute force approach was to iterate through both list
-    // and create 1 array then sort it using sort()
+    // Optimal Solution
     // TimeComplexity O(N+M)
     // SpaceComplexity O(1)
-    // We are only Relinking the Nodes of both using the Dummy node temp3
-    // Basic Idea - Compare and add to the dummy node 
+    // Best Idea where the process is being shortened when calculated
+    // The while loop doest explode
+    // Not Much differenece From my approach
+    // But easy to understand if watched the video or just think of the algorithm sequence
     // Space Complexity Wont increase as we are not creating new nodes 
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode* temp1= list1;
-        ListNode* temp2= list2;
-        ListNode* temp= new ListNode();
-        ListNode* temp3= temp;
-        while(temp1 && temp2)
-        {
-            if(temp1->val<temp2->val){
-                temp->next=temp1;
-                temp1=temp1->next;
+
+
+        if(list1==nullptr)return list2;
+        if(list2==nullptr)return list1;
+        if(list1->val>list2->val){
+            swap(list1,list2);
+        }
+        ListNode* temp= NULL;
+        ListNode* ans= list1;
+        while(list1 && list2){
+            if(list1->val<=list2->val){
+                temp=list1;
+                list1=list1->next;
             }
             else{
-                temp->next=temp2;
-                temp2=temp2->next;
+                temp->next=list2;
+                swap(list1,list2);
             }
-            temp=temp->next;
         }
-        if(temp1){
-            temp->next=temp1;
-        }
-        if(temp2){
-            temp->next=temp2;
-        }
-        return temp3->next;
+        if(list1) temp->next = list1;
+        if(list2) temp->next = list2;
+
+        return ans;
     }
 };
