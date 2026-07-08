@@ -10,22 +10,18 @@
  */
 class Solution {
 public:
-    // Brute Force Approach
-    // Used a stack to store value and then
-    // Created a New Linked List and added values from last 
     ListNode* reverseList(ListNode* head) {
-        ListNode* temp = head;
-        ListNode* Dummy = new ListNode(-1);
-        ListNode* temp1= Dummy;
-        vector<int> arr;
-        while(temp){
-            arr.push_back(temp->val);
-            temp=temp->next;
+        ListNode* current = head;
+        ListNode* front = NULL;
+        ListNode* prev = NULL;
+        
+        while(current){
+            front=current->next;
+            current->next=prev;
+            prev=current;
+            current=front;
         }
-        for(int j=arr.size()-1;j>=0;j--){
-            temp1->next=new ListNode(arr[j]);
-            temp1=temp1->next;
-        }
-        return Dummy->next;
+
+        return prev;
     }
 };
