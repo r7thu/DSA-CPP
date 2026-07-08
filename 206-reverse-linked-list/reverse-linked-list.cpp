@@ -10,18 +10,24 @@
  */
 class Solution {
 public:
+    // Recursive Solution
+    // Optimal Approach
+    // O(N) TC , O(N) SC due to calling stack
+   
     ListNode* reverseList(ListNode* head) {
-        ListNode* current = head;
-        ListNode* front = NULL;
-        ListNode* prev = NULL;
-        
-        while(current){
-            front=current->next;
-            current->next=prev;
-            prev=current;
-            current=front;
-        }
 
-        return prev;
+        //// This much code is for finding the head
+        if(head == NULL || head->next == NULL){
+            return head;
+        }
+        ListNode* newHead = reverseList(head->next);
+        // After Finding which just pass it back till 1st recursion
+
+        //CORE IDEA of recursion 
+        // here we are changing the arrows 
+        // Draw and check for better understanding
+        head->next->next = head;
+        head->next = NULL; 
+        return newHead;
     }
 };
