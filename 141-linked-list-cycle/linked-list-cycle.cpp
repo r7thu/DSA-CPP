@@ -4,7 +4,7 @@ public:
     // Brute Force Solution
     // Use a Hash Map to see if this Node is already visited
     // If visited then return true
-
+    //TC O(N), SC O(N)
     bool hasCycle(ListNode *head) {
     unordered_map <ListNode* ,int> mpp; 
     // This is how you make NODE as a key in Hash Map
