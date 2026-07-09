@@ -8,16 +8,24 @@
  */
 class Solution {
 public:
+    // Brute Force Approach
+    // Same Solution as in FindCycle
+    // Used Hash Map 
     ListNode *detectCycle(ListNode *head) {
-    unordered_map<ListNode*,int> mpp;
-    ListNode* temp= head;
-    while(temp){
-        mpp[temp]++;
-        if(mpp[temp]>1)
-            return temp;
-        temp=temp->next;
+    ListNode* slow=head;
+    ListNode* fast=head;
+    while(fast && fast->next){
+        slow=slow->next;
+        fast=fast->next->next;
+        if(fast==slow){
+            slow=head;
+            while(slow!=fast){
+                slow=slow->next;
+                fast=fast->next;
+            }
+            return slow;
+        }
     }
-    
     return NULL;
     }
 
