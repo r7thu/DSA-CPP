@@ -25,11 +25,11 @@ public:
      }   
      int j=arr.size();
      j -=1;
-     while(j){
+     for(;j>arr.size()/2-1;j--){
         if(arr[j]!=temp2->val){
             return false;
         }
-        j--;
+        // j--;
         temp2=temp2->next;
      }
      return true;
