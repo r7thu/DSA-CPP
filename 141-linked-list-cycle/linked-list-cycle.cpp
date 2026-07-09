@@ -1,15 +1,13 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+
 class Solution {
 public:
+    // Brute Force Solution
+    // Use a Hash Map to see if this Node is already visited
+    // If visited then return true
+
     bool hasCycle(ListNode *head) {
-    unordered_map <ListNode* ,int> mpp;
+    unordered_map <ListNode* ,int> mpp; 
+    // This is how you make NODE as a key in Hash Map
     ListNode* temp=head;
     while(temp){
         mpp[temp]++; 
