@@ -10,10 +10,9 @@ public:
      ListNode* slow=head;
      ListNode* fast=head;
      while(fast && fast->next){
-        fast=fast->next->next;
         slow=slow->next;
+        fast=fast->next->next;
      }
-    //  slow->next=NULL;
      ListNode* current =slow;
      ListNode* prev =NULL;
      while(current){
