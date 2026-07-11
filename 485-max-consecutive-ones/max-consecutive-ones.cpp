@@ -1,5 +1,8 @@
 class Solution {
 public:
+    // Easy Idea
+    // TC O(N)
+    
     int findMaxConsecutiveOnes(vector<int>& nums) {
      int n=nums.size();
      int count=0;
