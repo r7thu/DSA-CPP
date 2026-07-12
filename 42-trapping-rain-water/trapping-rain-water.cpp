@@ -1,11 +1,12 @@
 class Solution {
 public:
-    // Brute Force Solution
-    // Basic Idea
-    // Water trapped at index i
-    // is min[leftMax,rightMax]-height[i]
-    // leftMax --> prefixSum
-    // rightMax --> suffixSum
+    // use two pointers l (start) and r (end) with running lMax, rMax.
+    // Whichever side has the SMALLER height is safe to process, because the
+    // taller side is guaranteed to have a wall >= that    smaller height somewhere,
+    // so it can never be the limiting factor for water level on this side.
+    // So: compare height[l] vs height[r] -> move pointer on smaller side ->
+    // if current lMax/rMax > height at that pointer, water is  trapped (add diff),
+    // else update lMax/rMax to this new taller wall. Repeat till l == r. O(n), O(1).
     
     int trap(vector<int>& height) {
     int n=height.size();
