@@ -1,38 +1,28 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
+    // Brute Force Approach
+    // Idea --> remove last element and attach it at the front of the linked list K times this will rotate the matrix K times
     ListNode* rotateRight(ListNode* head, int k) {
-    if (!head || !head->next || k == 0) return head;
+        if (!head || !head->next || k == 0) return head;
 
-    int len = 1;
-    ListNode* tail = head;
-    while (tail->next) {
-        tail = tail->next;
-        len++;
-    }
-
-    k %= len;
-    if (k == 0) return head;
-
-        for(int i=0;i<k;i++){
-        ListNode* temp=head;
-        while(temp->next->next){
-            temp=temp->next;
+        int count = 1;
+        ListNode* tail = head;
+        while (tail->next) {
+            tail = tail->next;
+            count++;
         }
+        k %= count;
+        if (k == 0) return head;
 
-        temp->next->next=head;
-        head=temp->next;
-        temp->next=NULL;
+        // Main Idea/Logic
+        ListNode* slow=head;
+        for(int i=0;i<count-k-1;i++){
+            slow=slow->next;
         }
+        
+        tail->next=head;
+        head=slow->next;
+        slow->next=NULL;
         return head;
     }
 };
