@@ -1,32 +1,33 @@
 class Solution {
 public:
-    // Better Approach
-    // TC O(N^2 logM)
-    // SC O(N)+O(st.size())
-    // Different from 2 Sum
-    // here we are creating a different HashMap
-    // for each i ,j. where i----j----n 
-    // the space betweeen i ,j we add to Hash Map
-    // We create a new HashMap whenever i changes
-    // We do this to avoid same nos being used
+    // Optimal Appproach 
     vector<vector<int>> threeSum(vector<int>& nums) {
-        set <vector<int>> st;
-        vector<int> res;
-        int n=nums.size();
-        sort(nums.begin(),nums.end());
-
-        for(int i=0;i<n;i++){
-            map <int,int> mpp;
-            for(int j=i+1;j<n;j++){
-                int complement=-(nums[i]+nums[j]);
-                if(mpp.find(complement)!=mpp.end()){
-                    res= {nums[i],complement,nums[j]};
-                    st.insert(res);
-                }
-                mpp[nums[j]]++;
+    int n=nums.size();
+    vector<vector<int>> ans;
+    sort(nums.begin(),nums.end());
+    for(int i=0;i<n;i++){
+        if(i>0 && nums[i]==nums[i-1])
+            continue;
+        int j=i+1;
+        int k=n-1;
+        while(j<k){
+            int sum=nums[j]+nums[k]+nums[i];
+            if(sum==0){
+                ans.push_back({nums[j],nums[k],nums[i]});
+                while(j<k && nums[j+1]==nums[j])
+                    j++;
+                while(j<k && nums[k-1]==nums[k])
+                    k--;
+                j++;
+                k--;
+            }
+            else if(sum<0){
+                j++;
+            }else if(sum>0){
+                k--;
             }
         }
-        vector<vector<int>> ans(st.begin(),st.end());
-        return ans;
+    }
+    return ans;
     }
 };
