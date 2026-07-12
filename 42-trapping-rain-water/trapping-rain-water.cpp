@@ -12,17 +12,21 @@ public:
         vector<int> prefixSum(n);
         int suffixVal=0;
         vector<int> suffixSum(n);
-        for(int i=0;i<n;i++){
-            if(height[i]>prefixVal)
-                prefixVal=height[i];
-            prefixSum[i]=prefixVal;
+        prefixSum[0]=height[0];
+        suffixSum[n-1]=height[n-1];
+        for(int i=1;i<n;i++){
+            // if(height[i]>prefixVal)
+            //     prefixVal=height[i];
+            // prefixSum[i]=prefixVal;
+            prefixSum[i]=max(prefixSum[i-1],height[i]);
         }
-        for(int i=n-1;i>=0;i--){
-            if(height[i]>suffixVal)
-                suffixVal =height[i];
-            suffixSum[i]=suffixVal;
+        for(int i=n-2;i>=0;i--){
+            // if(height[i]>suffixVal)
+            //     suffixVal =height[i];
+            // suffixSum[i]=suffixVal;
+            suffixSum[i]=max(suffixSum[i+1],height[i]);
         }
-        
+
         int sum=0;
 
         // One thing You need to understand is that
