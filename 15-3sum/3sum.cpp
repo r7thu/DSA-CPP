@@ -1,8 +1,14 @@
 class Solution {
 public:
-    // Brute Force Approach
-    // TC O(N^3*k)
-    // SC O(1)
+    // Better Approach
+    // TC O(N^2 logM)
+    // SC O(N)+O(st.size())
+    // Different from 2 Sum
+    // here we are creating a different HashMap
+    // for each i ,j. where i----j----n 
+    // the space betweeen i ,j we add to Hash Map
+    // We create a new HashMap whenever i changes
+    // We do this to avoid same nos being used
     vector<vector<int>> threeSum(vector<int>& nums) {
         set <vector<int>> st;
         vector<int> res;
