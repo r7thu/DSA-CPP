@@ -10,8 +10,6 @@ public:
         sort(nums.begin(),nums.end());
 
         for(int i=0;i<n;i++){
-            if(i>0 && nums[i]==nums[i-1]) continue;
-
             map <int,int> mpp;
             for(int j=i+1;j<n;j++){
                 int complement=-(nums[i]+nums[j]);
