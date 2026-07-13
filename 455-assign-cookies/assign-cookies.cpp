@@ -4,6 +4,8 @@ public:
     // We compare the starting with the smallest cookie
     // we move up checking if anyone can eat that
     // when a child can eat we give it to that child and go to next child
+    // TC O(nLogn + mLogm + M)
+    // SC O(1)
     int findContentChildren(vector<int>& g, vector<int>& s) {
         int n=g.size(); //Sorting TC O(NlogN)
         int m=s.size();
